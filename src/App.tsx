@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 /* Contexts */
 import { AppSettingsProvider } from "./Contexts/AppSettingsContext";
@@ -39,24 +39,27 @@ function AppContent() {
   return (
     <Routes>
       {/* Default route → Splash */}
-      <Route path="/" element={<Splash />} />
-      <Route path="/Splash/*" element={<Splash />} />
-      <Route path="/Home/*" element={<Home />} />
+      <Route index element={<Splash />} />          {/* Default */}
+      <Route path="Splash/*" element={<Splash />} />
+      <Route path="Home/*" element={<Home />} />
 
       {/* Auth */}
-      <Route path="/login" element={<Login setRole={setRole} />} />
-      <Route path="/register" element={<Register setRole={setRole} />} />
+      <Route path="login" element={<Login setRole={setRole} />} />
+      <Route path="register" element={<Register setRole={setRole} />} />
 
       {/* Dashboards */}
-      <Route path="/admin/dashboard/*" element={<AdminDashboard />} />
-      <Route path="/couple/dashboard/*" element={<CoupleDashboard />} />
-      <Route path="/manager/dashboard/*" element={<ManagerDashboard />} />
-      <Route path="/protocol/dashboard/*" element={<ProtocolDashboard />} />
-      <Route path="/attendee/dashboard/*" element={<AttendeeDashboard />} />
-      <Route path="/vendor/dashboard/*" element={<VendorDashboard />} />
+      <Route path="admin/dashboard/*" element={<AdminDashboard />} />
+      <Route path="couple/dashboard/*" element={<CoupleDashboard />} />
+      <Route path="manager/dashboard/*" element={<ManagerDashboard />} />
+      <Route path="protocol/dashboard/*" element={<ProtocolDashboard />} />
+      <Route path="attendee/dashboard/*" element={<AttendeeDashboard />} />
+      <Route path="vendor/dashboard/*" element={<VendorDashboard />} />
 
       {/* Payments */}
-      <Route path="/couple/pay/:paymentId" element={<CouplePayVendor />} />
+      <Route path="couple/pay/:paymentId" element={<CouplePayVendor />} />
+
+      {/* Catch-all → redirect to Splash */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

@@ -1,12 +1,25 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-// Detect if we are in production (GH Pages) or local dev
-const isGHPages = process.env.NODE_ENV === 'production'
+// Get the repository name
+const repoName = "WEMS-Wedding-Events-Management-System";
 
 export default defineConfig({
+  // Set base dynamically based on environment
+  base: process.env.NODE_ENV === 'production' ? `/${repoName}/` : '/',
   plugins: [react()],
-  base: isGHPages
-    ? '/WEMS-Wedding-Events-Management-System/' // GitHub Pages path
-    : '/', // Local dev
-})
+  // Ensure assets are properly referenced
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
+      }
+    }
+  }
+});
