@@ -8,5 +8,5 @@ export default defineConfig({
   plugins: [react()],
   base: isGHPages
     ? '/WEMS-Wedding-Events-Management-System/' // GitHub Pages path
-    : '/', // Local dev
+
 })
