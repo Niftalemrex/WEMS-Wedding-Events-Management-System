@@ -6,8 +6,8 @@ import { AppSettingsProvider } from "./Contexts/AppSettingsContext";
 import { AppAppearanceProvider } from "./Contexts/AppAppearanceContext";
 import { AppSystemLogProvider } from "./Contexts/AppSystemLog";
 
-import  Splash from "./Splash";
-import  Home from "./Intro/Home";
+import Splash from "./Splash";
+import Home from "./Intro/Home";
 /* Auth */
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
@@ -33,17 +33,14 @@ type UserRole =
 /* =====================================================
    ROUTES
 ===================================================== */
-
 function AppContent() {
   const [role, setRole] = useState<UserRole>(null);
 
   return (
     <Routes>
-      {/* Default route → Login */}
+      {/* Default route → Splash */}
       <Route path="/" element={<Splash />} />
-
       <Route path="/Splash/*" element={<Splash />} />
-
       <Route path="/Home/*" element={<Home />} />
 
       {/* Auth */}
@@ -66,12 +63,16 @@ function AppContent() {
 
 /* =====================================================
    APP ROOT
+   ✅ Dynamic basename for dev vs GitHub Pages
 ===================================================== */
-
 export default function App() {
+  const basename =
+    import.meta.env.PROD
+      ? "/WEMS-Wedding-Events-Management-System"
+      : "/"; // local dev
+
   return (
-    <BrowserRouter>
-      {/* 🌍 Global Providers */}
+    <BrowserRouter basename={basename}>
       <AppSettingsProvider>
         <AppAppearanceProvider>
           <AppSystemLogProvider>
