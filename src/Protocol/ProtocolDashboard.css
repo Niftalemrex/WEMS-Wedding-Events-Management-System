@@ -1,0 +1,119 @@
+/* ===========================
+   Protocol Dashboard Layout
+=========================== */
+
+.protocol-dashboard-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: #f5f6fa;
+    overflow: hidden;
+  }
+  
+  /* ===========================
+     Sidebar Wrapper
+  =========================== */
+  
+  .protocol-sidebar-wrapper {
+    width: 260px;
+    flex-shrink: 0;
+    height: 100%;
+    background: #0f172a;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Desktop sidebar */
+  @media (min-width: 1024px) {
+    .protocol-sidebar-wrapper {
+      position: relative;
+      transform: translateX(0);
+    }
+  }
+  
+  /* ===========================
+     Main Content
+  =========================== */
+  
+  .protocol-main-content {
+    margin-left: 100px;
+  
+    margin-left: var(--sidebar-width);
+    background: var(--bg-light)!important;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1; /* Allow to stretch within parent */
+    overflow-y: none;
+    scrollbar-gutter: stable;
+    height: 100%;
+  }
+  
+  /* ===========================
+     Mobile Hamburger
+  =========================== */
+  
+  .protocol-mobile-hamburger {
+    display: none;
+  }
+  
+  /* ===========================
+     Overlay
+  =========================== */
+  
+  .protocol-sidebar-overlay {
+    display: none;
+  }
+  
+  /* ===========================
+     MOBILE ONLY
+  =========================== */
+  
+  @media (max-width: 1023px) {
+  
+    /* Hamburger */
+    .protocol-mobile-hamburger {
+      display: block;
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1100;
+      font-size: 26px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 6px 14px;
+      cursor: pointer;
+    }
+  
+    /* Sidebar hidden */
+    .protocol-sidebar-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      z-index: 1000;
+    }
+  
+    /* Sidebar open */
+    .protocol-sidebar-wrapper.open {
+      transform: translateX(0);
+    }
+  
+    /* Overlay */
+    .protocol-sidebar-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 900;
+    }
+  
+    /* Content spacing */
+    .protocol-main-content {
+      padding-top: 70px;
+      border-left: none;
+    }
+  }
+  

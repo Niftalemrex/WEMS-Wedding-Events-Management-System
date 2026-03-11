@@ -1,0 +1,428 @@
+/* ===============================
+   VendorOverview.css
+   Canonical Theme Version
+================================ */
+
+/* ===== THEME VARIABLES ===== */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+
+  --card-bg: #ffffff;
+  --card-alt-bg: #faf5ff;
+
+  --primary: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --primary-light: #a78bfa;
+
+  --border-color: #e5e7eb;
+  --soft-border: #ddd6fe;
+
+  --shadow-soft: rgba(0, 0, 0, 0.08);
+  --shadow-strong: rgba(139, 92, 246, 0.35);
+}
+
+/* ===== DARK MODE ===== */
+.dark,
+:root.dark {
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+
+  --card-bg: #1e293b;
+  --card-alt-bg: #312e81;
+
+  --border-color: #334155;
+  --soft-border: #4338ca;
+
+  --shadow-soft: rgba(0, 0, 0, 0.45);
+  --shadow-strong: rgba(139, 92, 246, 0.55);
+}
+
+/* ===== BASE CONTAINER ===== */
+.vendor-overview-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+.vendor-overview-container h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.6rem;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark),
+    var(--primary-light)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vendor-overview-container h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 40%;
+  border-radius: 2px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  transition: width 0.6s ease;
+}
+
+.vendor-overview-container h1:hover::after {
+  width: 100%;
+}
+
+/* ===== GRID ===== */
+.vendor-overview-container .grid {
+  display: grid;
+  gap: 2rem;
+  animation: slideInUp 0.8s ease-out;
+}
+
+/* ===== OVERVIEW CARD ===== */
+.overview-card {
+  background: var(--card-bg);
+  border: 1px solid var(--soft-border);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  animation: cardAppear 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition: all 0.4s ease;
+}
+
+.overview-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0.35;
+  transition: all 0.4s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 50px var(--shadow-strong);
+}
+
+.overview-card:hover::before {
+  opacity: 1;
+  padding: 3px;
+}
+
+/* ===== ICON ===== */
+.overview-card svg {
+  width: 4.5rem;
+  height: 4.5rem;
+  padding: 1rem;
+
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-light)
+  );
+  color: white;
+
+  box-shadow: 0 8px 25px var(--shadow-soft);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.overview-card:hover svg {
+  transform: rotate(15deg) scale(1.15);
+  box-shadow: 0 14px 35px var(--shadow-strong);
+}
+
+/* ===== CARD TEXT ===== */
+.overview-card > div {
+  z-index: 2;
+}
+
+.overview-card p:first-child {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  margin-bottom: 0.75rem;
+}
+
+.overview-card p:last-child {
+  font-size: 2.3rem;
+  font-weight: 800;
+  position: relative;
+}
+
+.overview-card p:last-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--primary-light)
+  );
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.overview-card:hover p:last-child::after {
+  width: 100%;
+}
+
+/* ===== DETAIL SECTIONS ===== */
+.vendor-overview-container > .grid:nth-child(3) {
+  margin-top: 3rem;
+}
+
+/* ===== LIST CONTAINERS ===== */
+.vendor-overview-container > .grid:nth-child(3) > div {
+  background: var(--card-bg);
+  border: 1px solid var(--soft-border);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  animation: listAppear 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.vendor-overview-container > .grid:nth-child(3) > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0.25;
+  transition: all 0.4s ease;
+}
+
+.vendor-overview-container > .grid:nth-child(3) > div:hover::before {
+  opacity: 1;
+  padding: 3px;
+}
+
+/* ===== LIST HEADERS ===== */
+.vendor-overview-container h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.vendor-overview-container h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 60px;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.vendor-overview-container > .grid:nth-child(3) > div:hover h3::after {
+  width: 100%;
+}
+
+/* ===== LIST ===== */
+.vendor-overview-container ul {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.vendor-overview-container ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vendor-overview-container ul::-webkit-scrollbar-track {
+  background: var(--card-alt-bg);
+}
+
+.vendor-overview-container ul::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+/* ===== LIST ITEMS ===== */
+.vendor-overview-container ul li {
+  list-style: none;
+  padding: 1rem 0 1rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.vendor-overview-container ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.vendor-overview-container ul li:hover {
+  padding-left: 2.5rem;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 2px dashed var(--soft-border);
+  background: var(--card-alt-bg);
+  opacity: 0.7;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes listAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .vendor-overview-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .vendor-overview-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    display: block;
+  }
+
+  .overview-card {
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .overview-card svg {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .overview-card p:last-child {
+    font-size: 1.8rem;
+  }
+
+  .vendor-overview-container .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+.overview-card:focus-visible,
+.vendor-overview-container > .grid:nth-child(3) > div:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 4px;
+}

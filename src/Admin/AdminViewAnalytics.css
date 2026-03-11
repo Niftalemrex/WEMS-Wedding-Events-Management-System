@@ -1,0 +1,571 @@
+/* AdminViewAnalytics.css - Scoped Component Styles */
+
+/* ===== COMPONENT-SPECIFIC STYLES ===== */
+.admin-analytics-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  position: relative;
+  padding: var(--space-4);
+  box-sizing: border-box;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Optional: Larger padding on bigger screens */
+@media (min-width: 1024px) {
+  .admin-analytics-container {
+    padding: var(--space-8);
+  }
+}
+
+/* Title styling - scoped */
+.admin-analytics-container h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: var(--space-4);
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
+  padding: var(--space-2) 0;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  .admin-analytics-container h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+/* Stats grid - scoped - FIXED FOR SIDE BY SIDE */
+.admin-analytics-container .grid {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+/* Default: 1 column on mobile */
+.admin-analytics-container .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Medium screens: 2 columns */
+@media (min-width: 640px) {
+  .admin-analytics-container .grid-cols-1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Large screens: 4 columns */
+@media (min-width: 1024px) {
+  .admin-analytics-container .grid-cols-1 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Stats card - scoped */
+.admin-analytics-container .bg-white {
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  text-align: center;
+  transition: all var(--transition-base);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+}
+
+.admin-analytics-container .bg-white:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Stats card text - scoped */
+.admin-analytics-container .text-gray-500.text-sm {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: var(--space-2);
+}
+
+.admin-analytics-container .text-xl.font-semibold {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Chart containers - scoped */
+.admin-analytics-container .bg-white.shadow.rounded.p-4 {
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--border-color);
+}
+
+.admin-analytics-container .bg-white.shadow.rounded.p-4:last-child {
+  margin-bottom: 0;
+}
+
+/* Chart titles - scoped */
+.admin-analytics-container .text-lg.font-semibold.mb-2 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: var(--space-2);
+}
+
+/* Recharts container styling - scoped */
+.admin-analytics-container .recharts-wrapper {
+  font-family: inherit;
+}
+
+/* Recharts text elements - scoped */
+.admin-analytics-container .recharts-text {
+  fill: var(--text-color);
+  font-size: 0.75rem;
+  font-family: inherit;
+}
+
+.admin-analytics-container .recharts-cartesian-axis-tick-value {
+  fill: var(--text-color);
+  font-size: 0.75rem;
+}
+
+.admin-analytics-container .recharts-legend-item-text {
+  fill: var(--text-color);
+  font-size: 0.75rem;
+}
+
+/* Tooltip styling - scoped */
+.admin-analytics-container .recharts-tooltip-wrapper {
+  background-color: var(--bg-color) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.admin-analytics-container .recharts-tooltip-label {
+  color: var(--text-color) !important;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.admin-analytics-container .recharts-tooltip-item {
+  color: var(--text-color) !important;
+}
+
+/* Bar chart specific - scoped */
+.admin-analytics-container .recharts-bar-rectangle {
+  fill: var(--primary-color, #8884d8);
+}
+
+/* Pie chart specific - scoped */
+.admin-analytics-container .recharts-pie-label-text {
+  fill: var(--text-color);
+  font-size: 0.75rem;
+}
+
+/* Legend styling - scoped */
+.admin-analytics-container .recharts-legend-wrapper {
+  font-size: 0.75rem;
+}
+
+/* XAxis and YAxis lines - scoped */
+.admin-analytics-container .recharts-cartesian-axis-line {
+  stroke: var(--border-color);
+}
+
+.admin-analytics-container .recharts-cartesian-grid line {
+  stroke: var(--gray-200);
+}
+
+/* Responsive design - scoped */
+@media (min-width: 768px) {
+  .admin-analytics-container .md\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .admin-analytics-container .md\\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .admin-analytics-container .md\\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Dark mode adjustments - scoped */
+.dark .admin-analytics-container {
+  background-color: var(--bg-color);
+}
+
+.dark .admin-analytics-container h1 {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.dark .admin-analytics-container .bg-white {
+  background-color: var(--gray-900);
+  border-color: var(--gray-800);
+}
+
+.dark .admin-analytics-container .bg-white:hover {
+  background-color: var(--gray-800);
+}
+
+.dark .admin-analytics-container .text-gray-500.text-sm {
+  color: var(--gray-500);
+}
+
+.dark .admin-analytics-container .text-xl.font-semibold {
+  color: var(--text-color);
+}
+
+.dark .admin-analytics-container .bg-white.shadow.rounded.p-4 {
+  background-color: var(--gray-900);
+  border-color: var(--gray-800);
+}
+
+.dark .admin-analytics-container .text-lg.font-semibold.mb-2 {
+  color: var(--text-color);
+}
+
+/* Dark mode for Recharts */
+.dark .admin-analytics-container .recharts-text {
+  fill: var(--text-color);
+}
+
+.dark .admin-analytics-container .recharts-cartesian-axis-tick-value {
+  fill: var(--text-color);
+}
+
+.dark .admin-analytics-container .recharts-legend-item-text {
+  fill: var(--text-color);
+}
+
+.dark .admin-analytics-container .recharts-cartesian-axis-line {
+  stroke: var(--gray-700);
+}
+
+.dark .admin-analytics-container .recharts-cartesian-grid line {
+  stroke: var(--gray-800);
+}
+
+.dark .admin-analytics-container .recharts-tooltip-wrapper {
+  background-color: var(--gray-900) !important;
+  border-color: var(--gray-700) !important;
+}
+
+.dark .admin-analytics-container .recharts-tooltip-label {
+  color: var(--text-color) !important;
+}
+
+.dark .admin-analytics-container .recharts-tooltip-item {
+  color: var(--text-color) !important;
+}
+
+.dark .admin-analytics-container .recharts-pie-label-text {
+  fill: var(--text-color);
+}
+
+/* Margin utilities - scoped */
+.admin-analytics-container .mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+.admin-analytics-container .mb-6 {
+  margin-bottom: var(--space-6);
+}
+
+.admin-analytics-container .mb-2 {
+  margin-bottom: var(--space-2);
+}
+
+/* Padding utilities - scoped */
+.admin-analytics-container .p-4 {
+  padding: var(--space-4);
+}
+
+/* Text utilities - scoped */
+.admin-analytics-container .font-bold {
+  font-weight: 700;
+}
+
+.admin-analytics-container .font-semibold {
+  font-weight: 600;
+}
+
+/* Border radius - scoped */
+.admin-analytics-container .rounded {
+  border-radius: var(--radius-md);
+}
+
+/* Shadow utilities - scoped */
+.admin-analytics-container .shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Gap utilities - scoped */
+.admin-analytics-container .gap-4 {
+  gap: var(--space-4);
+}
+
+/* Responsive adjustments for small screens - scoped */
+@media (max-width: 768px) {
+  .admin-analytics-container {
+    padding: var(--space-4);
+  }
+  
+  .admin-analytics-container .recharts-legend-wrapper {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-analytics-container .grid-cols-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-analytics-container .bg-white.shadow.rounded.p-4 {
+    margin-bottom: var(--space-4);
+  }
+  
+  .admin-analytics-container .recharts-wrapper {
+    height: 200px !important;
+  }
+}
+
+/* Print styles - scoped */
+@media print {
+  .admin-analytics-container {
+    background: white !important;
+    color: black !important;
+    overflow: visible !important;
+  }
+  
+  .admin-analytics-container .bg-white {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .admin-analytics-container .text-gray-500 {
+    color: #666 !important;
+  }
+  
+  .admin-analytics-container h1 {
+    color: black !important;
+    position: static !important;
+    background: none !important;
+  }
+  
+  .admin-analytics-container .text-xl.font-semibold {
+    color: black !important;
+  }
+  
+  .admin-analytics-container .bg-white.shadow.rounded.p-4 {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Animation for chart containers */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-analytics-container .bg-white {
+  animation: fadeIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.admin-analytics-container .grid > .bg-white:nth-child(1) { animation-delay: 0.1s; }
+.admin-analytics-container .grid > .bg-white:nth-child(2) { animation-delay: 0.2s; }
+.admin-analytics-container .grid > .bg-white:nth-child(3) { animation-delay: 0.3s; }
+.admin-analytics-container .grid > .bg-white:nth-child(4) { animation-delay: 0.4s; }
+
+.admin-analytics-container .bg-white.shadow.rounded.p-4:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.admin-analytics-container .bg-white.shadow.rounded.p-4:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+/* Currency formatting for payments */
+.admin-analytics-container .grid > .bg-white:nth-child(4) .text-xl.font-semibold::before {
+  content: "$";
+}
+
+/* ResponsiveContainer height adjustments */
+@media (max-height: 700px) {
+  .admin-analytics-container .recharts-wrapper {
+    height: 200px !important;
+  }
+}
+
+/* Ensure proper chart tooltip z-index */
+.admin-analytics-container .recharts-tooltip-wrapper {
+  z-index: 1000 !important;
+}
+
+/* Fix for responsive grid breakpoints */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .admin-analytics-container .grid-cols-1 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== SCROLLING ENHANCEMENTS ===== */
+
+/* Smooth scrolling for the entire component */
+.admin-analytics-container {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for the container */
+.admin-analytics-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.admin-analytics-container::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+}
+
+.admin-analytics-container::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: var(--radius-full);
+}
+
+.admin-analytics-container::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+.dark .admin-analytics-container::-webkit-scrollbar-track {
+  background: var(--gray-800);
+}
+
+.dark .admin-analytics-container::-webkit-scrollbar-thumb {
+  background: var(--gray-600);
+}
+
+.dark .admin-analytics-container::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}
+
+/* Ensure charts have enough bottom padding for scrolling */
+.admin-analytics-container .bg-white.shadow.rounded.p-4 {
+  padding-bottom: var(--space-6);
+}
+
+/* Add a subtle gradient fade at the bottom when scrolling is needed */
+.admin-analytics-container::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--bg-color));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.admin-analytics-container.scrollable::after {
+  opacity: 1;
+}
+
+/* Make sure the sticky header doesn't overlap content when scrolling */
+.admin-analytics-container h1 {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Add padding at the bottom to ensure content doesn't get cut off */
+.admin-analytics-container {
+  padding-bottom: var(--space-12);
+}
+
+/* Media query for smaller screens to adjust bottom padding */
+@media (max-width: 768px) {
+  .admin-analytics-container {
+    padding-bottom: var(--space-8);
+  }
+}
+
+/* Ensure ResponsiveContainer works well with scrolling */
+.admin-analytics-container .recharts-responsive-container {
+  width: 100% !important;
+}
+
+/* Add some space between chart sections for better scrolling experience */
+.admin-analytics-container > * + * {
+  margin-top: var(--space-4);
+}
+
+/* Scroll indicator animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  background-color: var(--primary-color);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: bounce 2s infinite;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator.visible {
+  opacity: 1;
+}
+
+.scroll-indicator:hover {
+  background-color: var(--primary-hover-color);
+  transform: scale(1.1);
+}

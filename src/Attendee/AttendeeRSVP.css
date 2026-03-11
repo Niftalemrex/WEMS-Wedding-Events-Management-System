@@ -1,0 +1,531 @@
+/* AttendeeRSVP.css - Professional RSVP Management */
+
+/* Base container */
+.attendee-rsvp-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  /* Header styling */
+  .attendee-rsvp-container h1 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #10b981, #059669);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  
+  .attendee-rsvp-container h1::before {
+    content: '📬';
+    position: absolute;
+    left: -3.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+  }
+  
+  .attendee-rsvp-container h1:hover::before {
+    transform: translateY(-50%) rotate(-15deg);
+  }
+  
+  .attendee-rsvp-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #10b981, #059669, #047857);
+    border-radius: 2px;
+    transform: scaleX(0.4);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .attendee-rsvp-container h1:hover::after {
+    transform: scaleX(1);
+  }
+  
+  /* RSVP list */
+  .rsvp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: slideInUp 0.8s ease-out;
+  }
+  
+  /* RSVP card */
+  .rsvp-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border: 1px solid transparent;
+    border-radius: 24px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: cardAppear 0.6s ease-out forwards;
+    animation-delay: calc(var(--card-index, 0) * 0.1s);
+    opacity: 0;
+    transform: translateY(30px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .rsvp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: all 0.4s ease;
+    opacity: 0.3;
+  }
+  
+  .rsvp-card.declined::before {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+  }
+  
+  .rsvp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rsvp-card:hover::before {
+    padding: 3px;
+    opacity: 1;
+  }
+  
+  .rsvp-card.accepted:hover {
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+  }
+  
+  .rsvp-card.declined:hover {
+    box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
+  }
+  
+  /* RSVP info */
+  .rsvp-info {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .rsvp-info strong {
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .rsvp-card:hover .rsvp-info strong {
+    color: #1f2937;
+  }
+  
+  .rsvp-info span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    transition: color 0.3s ease;
+    display: block;
+  }
+  
+  .rsvp-card:hover .rsvp-info span {
+    color: #064e3b;
+  }
+  
+  .rsvp-card.declined:hover .rsvp-info span {
+    color: #7f1d1d;
+  }
+  
+  /* RSVP status */
+  .rsvp-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    min-width: 180px;
+    justify-content: center;
+  }
+  
+  .rsvp-card.declined .rsvp-status {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  }
+  
+  .rsvp-card:hover .rsvp-status {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Icon styling */
+  .rsvp-status .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .rsvp-status .icon.accepted {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: white;
+  }
+  
+  .rsvp-status .icon.declined {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+    color: white;
+  }
+  
+  .rsvp-card:hover .rsvp-status .icon {
+    transform: rotate(15deg) scale(1.2);
+  }
+  
+  /* Status text */
+  .rsvp-status span {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+  }
+  
+  .rsvp-status .accepted + span {
+    color: #059669;
+  }
+  
+  .rsvp-status .declined + span {
+    color: #dc2626;
+  }
+  
+  .rsvp-card:hover .rsvp-status .accepted + span {
+    color: #047857;
+  }
+  
+  .rsvp-card:hover .rsvp-status .declined + span {
+    color: #b91c1c;
+  }
+  
+  /* Status toggle animation */
+  @keyframes statusToggle {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .status-changing .rsvp-status {
+    animation: statusToggle 0.3s ease-out;
+  }
+  
+  /* Empty state */
+  .attendee-rsvp-container > p.text-gray-500 {
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    padding: 5rem 4rem;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #6b7280;
+    border: 3px dashed #d1d5db;
+    margin: 4rem auto;
+    max-width: 600px;
+    position: relative;
+    animation: gentlePulse 3s ease-in-out infinite;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  }
+  
+  .attendee-rsvp-container > p.text-gray-500::before {
+    content: '📨';
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 2rem;
+    animation: envelopeFloat 2.5s ease-in-out infinite;
+  }
+  
+  .attendee-rsvp-container > p.text-gray-500::after {
+    content: 'Invitations will appear here once sent';
+    display: block;
+    font-size: 1.25rem;
+    color: #9ca3af;
+    margin-top: 1rem;
+    font-weight: 400;
+  }
+  
+  @keyframes envelopeFloat {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    25% { transform: translateY(-10px) rotate(-5deg); }
+    75% { transform: translateY(-5px) rotate(5deg); }
+  }
+  
+  @keyframes gentlePulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05); }
+    50% { transform: scale(1.02); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1); }
+  }
+  
+  /* RSVP count badge */
+  .rsvp-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-left: auto;
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes cardAppear {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .attendee-rsvp-container {
+      padding: 1.5rem 0.75rem;
+    }
+    
+    .attendee-rsvp-container h1 {
+      font-size: 2rem;
+      text-align: center;
+      display: block;
+      padding-left: 3rem;
+    }
+    
+    .attendee-rsvp-container h1::before {
+      left: 0;
+      top: -0.5rem;
+      transform: none;
+    }
+    
+    .rsvp-card {
+      padding: 1.75rem 1.5rem;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.5rem;
+    }
+    
+    .rsvp-status {
+      min-width: auto;
+      justify-content: flex-start;
+    }
+    
+    .rsvp-info span {
+      font-size: 1.25rem;
+    }
+    
+    .attendee-rsvp-container > p.text-gray-500 {
+      padding: 3rem 2rem;
+      font-size: 1.25rem;
+      margin: 2rem auto;
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .rsvp-card {
+      padding: 2rem;
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .attendee-rsvp-container {
+      background: linear-gradient(135deg, #022c22 0%, #064e3b 20%, #1e293b 100%);
+      color: #e2e8f0;
+    }
+    
+    .attendee-rsvp-container h1 {
+      background: linear-gradient(90deg, #34d399, #10b981);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    
+    .attendee-rsvp-container h1::after {
+      background: linear-gradient(90deg, #34d399, #10b981, #059669);
+    }
+    
+    .rsvp-card {
+      background: linear-gradient(145deg, #1e293b, #064e3b);
+      border-color: #374151;
+    }
+    
+    .rsvp-card::before {
+      background: linear-gradient(135deg, #34d399, #10b981);
+    }
+    
+    .rsvp-card.declined::before {
+      background: linear-gradient(135deg, #f87171, #ef4444);
+    }
+    
+    .rsvp-info strong {
+      color: #94a3b8;
+    }
+    
+    .rsvp-info span {
+      color: #f1f5f9;
+    }
+    
+    .rsvp-card:hover .rsvp-info strong {
+      color: #cbd5e1;
+    }
+    
+    .rsvp-card:hover .rsvp-info span {
+      color: #a7f3d0;
+    }
+    
+    .rsvp-card.declined:hover .rsvp-info span {
+      color: #fecaca;
+    }
+    
+    .rsvp-status {
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(16, 185, 129, 0.15));
+    }
+    
+    .rsvp-card.declined .rsvp-status {
+      background: linear-gradient(135deg, rgba(248, 113, 113, 0.15), rgba(239, 68, 68, 0.15));
+    }
+    
+    .rsvp-status .accepted + span {
+      color: #34d399;
+    }
+    
+    .rsvp-status .declined + span {
+      color: #f87171;
+    }
+    
+    .attendee-rsvp-container > p.text-gray-500 {
+      background: linear-gradient(135deg, #1e293b, #064e3b);
+      color: #94a3b8;
+      border-color: #475569;
+    }
+    
+    .rsvp-count {
+      background: linear-gradient(135deg, #34d399, #10b981);
+    }
+  }
+  
+  /* Focus accessibility */
+  .rsvp-card:focus-visible {
+    outline: 3px solid #10b981;
+    outline-offset: 4px;
+    border-radius: 24px;
+  }
+  
+  .rsvp-card.declined:focus-visible {
+    outline-color: #ef4444;
+  }
+  
+  /* Smooth theme transitions */
+  * {
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease, 
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+  
+  /* Print styles */
+  @media print {
+    .attendee-rsvp-container {
+      background: white !important;
+      color: black !important;
+      padding: 1rem !important;
+    }
+    
+    .attendee-rsvp-container h1 {
+      color: black !important;
+      background: none !important;
+    }
+    
+    .attendee-rsvp-container h1::before {
+      display: none;
+    }
+    
+    .attendee-rsvp-container h1::after {
+      background: #333;
+    }
+    
+    .rsvp-card {
+      break-inside: avoid;
+      box-shadow: none !important;
+      border: 1px solid #ddd !important;
+      margin-bottom: 1rem;
+    }
+    
+    .rsvp-card::before {
+      display: none;
+    }
+    
+    .rsvp-status .icon {
+      filter: grayscale(100%);
+    }
+    
+    .rsvp-status .accepted + span {
+      color: #333 !important;
+    }
+    
+    .rsvp-status .declined + span {
+      color: #666 !important;
+    }
+  }

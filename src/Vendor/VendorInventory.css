@@ -1,0 +1,193 @@
+:root {
+    --bg-color: #f9fafb;
+    --text-color: #111827;
+    --primary-color: #6366f1;
+    --green-color: #10b981;
+    --green-hover: #059669;
+    --purple-color: #7c3aed;
+    --purple-hover: #6d28d9;
+    --spacing-4: 1rem;
+    --border-radius: 0.375rem;
+    --input-padding: 0.5rem 0.75rem;
+  }
+  
+  /* ===============================
+     Container
+  ================================ */
+  .vendor-inventory-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: var(--spacing-4);
+    box-sizing: border-box;
+    position: relative;
+    overflow-x: hidden;
+    font-family: "Inter", sans-serif;
+  }
+  
+  /* ===============================
+     Headings
+  ================================ */
+  h1, h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  /* ===============================
+     Form Inputs & Selects
+  ================================ */
+  input, select {
+    border: 1px solid #d1d5db;
+    padding: var(--input-padding);
+    border-radius: var(--border-radius);
+    width: 100%;
+    font-size: 0.95rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+  
+  /* ===============================
+     Buttons
+  ================================ */
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  button:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+  }
+  
+  .bg-green-600 {
+    background-color: var(--green-color);
+    color: #fff;
+  }
+  
+  .bg-green-600:hover {
+    background-color: var(--green-hover);
+  }
+  
+  .bg-purple-600 {
+    background-color: var(--purple-color);
+    color: #fff;
+  }
+  
+  .bg-purple-600:hover {
+    background-color: var(--purple-hover);
+  }
+  
+  /* Prevent pointer events on SVGs inside buttons */
+  button svg {
+    pointer-events: none;
+  }
+  
+  /* ===============================
+     Tables
+  ================================ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  table th, table td {
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+  
+  table th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+  }
+  
+  table tr:hover {
+    background-color: #fef3c7;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Table inputs/selects */
+  table input, table select {
+    border: 1px solid #d1d5db;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+  }
+  
+  table input:focus, table select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+  
+  /* Gift image */
+  table img {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+  
+  /* ===============================
+     Grid Layouts
+  ================================ */
+  .grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+  
+  .md\:grid-cols-5 {
+    grid-template-columns: 1fr;
+  }
+  
+  @media(min-width: 768px) {
+    .md\:grid-cols-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  
+  /* ===============================
+     Search Input
+  ================================ */
+  input[type="text"].border, .search-input {
+    border: 1px solid #d1d5db;
+    padding: var(--input-padding);
+    border-radius: var(--border-radius);
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  input[type="text"].border:focus, .search-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+  }
+  

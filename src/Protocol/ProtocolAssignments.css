@@ -1,0 +1,219 @@
+/* ProtocolAssignments.css - Professional Styling with Theme */
+
+/* ===== THEME VARIABLES ===== */
+:root {
+  /* Colors */
+  --bg-color: #ffffff;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  --card-bg: #ffffff;
+  --card-alt-bg: #f8fafc;
+  --text-color: #1e293b;
+  --heading-color: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --primary: #6366f1;
+  --primary-dark: #8b5cf6;
+  --accent: #7c3aed;
+  --shadow-light: rgba(0, 0, 0, 0.08);
+  --shadow-hover: rgba(99, 102, 241, 0.15);
+
+  /* Font & spacing */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+
+  /* Border radius & transition */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --transition-base: 0.2s ease;
+}
+
+/* Dark Mode Variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0a0a0a;                /* page background */
+    --bg-gradient: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    --card-bg: #111111;                  /* big card = black */
+    --card-alt-bg: #1a1a1a;              /* secondary card */
+    --text-color: #e2e8f0;
+    --heading-color: #f7fafc;
+    --text-muted: #a0aec0;
+    --border-color: #333333;
+    --shadow-light: rgba(0, 0, 0, 0.5);
+    --shadow-hover: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ===== BASE CONTAINER ===== */
+.protocol-assignments-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+.protocol-assignments-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: var(--space-8);
+  padding-bottom: var(--space-4);
+  border-bottom: 3px solid var(--primary);
+  position: relative;
+}
+
+.protocol-assignments-container h1::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: 2px;
+}
+
+/* ===== FORM STYLING ===== */
+.assignment-form {
+  background: var(--card-bg);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px var(--shadow-light);
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background 0.3s ease;
+}
+
+.assignment-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 50px var(--shadow-hover);
+}
+
+.assignment-form input {
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  background: var(--card-alt-bg);
+  color: var(--text-color);
+  transition: all var(--transition-base);
+}
+
+.assignment-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--card-bg);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
+}
+
+.assignment-form input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===== BUTTON STYLING ===== */
+.assignment-form button {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.assignment-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow-hover);
+}
+
+.assignment-form button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== ASSIGNMENT CARDS ===== */
+.assignment-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out forwards;
+  animation-delay: calc(var(--index, 0) * 0.1s);
+  opacity: 0;
+}
+
+.assignment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.assignment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px var(--shadow-hover);
+}
+
+/* Card Text */
+.assignment-card div > p:first-child {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.assignment-card div > p:last-child {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .protocol-assignments-container { padding: 1rem 0.5rem; }
+  .protocol-assignments-container h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+  .assignment-form { padding: 1.5rem; }
+  .assignment-card { padding: 1.25rem; }
+  .assignment-card div > p:last-child { font-size: 1.25rem; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@keyframes slideIn { from { opacity:0; transform:translateX(-10px); } to { opacity:1; transform:translateX(0); } }
+.protocol-assignments-container > * { animation: fadeIn 0.3s ease-out forwards; }
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .protocol-assignments-container { background: white !important; color: black !important; }
+  .assignment-card { break-inside: avoid; box-shadow: none !important; border: 1px solid #ccc !important; }
+}

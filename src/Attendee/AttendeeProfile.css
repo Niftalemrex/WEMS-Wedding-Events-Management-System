@@ -1,0 +1,163 @@
+/* AttendeeProfile.css */
+
+/* ===== PAGE CONTAINER ===== */
+.admin-profile-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color, #ffffff);
+  color: var(--text-color, #1e293b);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Page title */
+.admin-profile-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* ===== PROFILE CARD ===== */
+.profile-form {
+  width: 100%;
+  max-width: 32rem;
+  background-color: var(--bg-color, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===== AVATAR SECTION ===== */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar-section img.avatar-preview {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border-color, #e2e8f0);
+  background-color: var(--gray-100, #f3f4f6);
+  transition: all 0.3s ease;
+}
+
+.avatar-section input[type="file"] {
+  cursor: pointer;
+}
+
+/* ===== INPUT GROUP ===== */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.input-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.input-group input {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--border-color, #e2e8f0);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color, #2563eb);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ===== SAVE BUTTON ===== */
+.save-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color, #2563eb);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-button:hover {
+  background-color: var(--primary-hover-color, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.save-button:active {
+  transform: translateY(0);
+}
+
+/* ===== DARK MODE ===== */
+.dark .admin-profile-page {
+  background-color: var(--bg-color, #111827);
+  color: var(--text-color, #f9fafb);
+}
+
+.dark .profile-form {
+  background-color: var(--gray-900, #111827);
+  border-color: var(--gray-800, #1f2937);
+}
+
+.dark .avatar-preview {
+  border-color: var(--gray-700, #374151);
+  background-color: var(--gray-800, #1f2937);
+}
+
+.dark .input-group label,
+.dark .input-group input {
+  color: var(--text-color, #f9fafb);
+}
+
+.dark .input-group input {
+  background-color: var(--gray-800, #1f2937);
+  border-color: var(--gray-700, #374151);
+}
+
+.dark .save-button {
+  background-color: var(--primary-color, #3b82f6);
+}
+
+.dark .save-button:hover {
+  background-color: var(--primary-hover-color, #2563eb);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .avatar-preview {
+    width: 6rem;
+    height: 6rem;
+  }
+  .profile-form {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-profile-page h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,185 @@
+/* ===========================
+   CouplesBudgetSummary.css
+   Modern Budget Summary
+=========================== */
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg-color: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%);
+  --text-color: #334155;
+  --heading-color: #065f46;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-border: rgba(167, 243, 208, 0.4);
+  --input-bg: #ffffff;
+  --input-border: #d1fae5;
+  --input-text: #064e3b;
+  --input-placeholder: #6b7280;
+  --button-bg: linear-gradient(135deg, #10b981, #059669);
+  --button-hover-bg: linear-gradient(135deg, #059669, #047857);
+  --button-shadow: 0 4px 12px rgba(16, 185, 129, 0.25), 0 2px 4px rgba(16, 185, 129, 0.1);
+  --button-hover-shadow: 0 12px 24px rgba(16, 185, 129, 0.35), 0 6px 12px rgba(16, 185, 129, 0.15);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --transition-base: 0.3s ease;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: linear-gradient(135deg, #022c22 0%, #064e3b 100%);
+    --text-color: #d1fae5;
+    --heading-color: #d1fae5;
+    --card-bg: rgba(6, 78, 59, 0.9);
+    --card-border: #065f46;
+    --input-bg: #022c22;
+    --input-border: #065f46;
+    --input-text: #d1fae5;
+    --input-placeholder: #a7f3d0;
+    --button-bg: linear-gradient(135deg, #10b981, #059669);
+    --button-hover-bg: linear-gradient(135deg, #059669, #047857);
+    --button-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    --button-hover-shadow: 0 12px 24px rgba(16, 185, 129, 0.35);
+  }
+}
+
+/* ===== CONTAINER ===== */
+.couple-budget-container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: var(--space-4);
+  box-sizing: border-box;
+}
+
+/* ===== HEADER ===== */
+.couple-budget-container h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--space-6);
+  color: var(--heading-color);
+}
+
+/* ===== ADD BUDGET FORM ===== */
+.couple-budget-container > div.bg-gray-50 {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.couple-budget-container select,
+.couple-budget-container input {
+  border: 2px solid var(--input-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  background: var(--input-bg);
+  color: var(--input-text);
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.couple-budget-container select:focus,
+.couple-budget-container input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 4px rgba(16,185,129,0.15);
+  transform: translateY(-1px);
+}
+
+/* ===== BUTTON ===== */
+.couple-budget-container button {
+  background: var(--button-bg);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: var(--button-shadow);
+  transition: all var(--transition-base);
+}
+
+.couple-budget-container button:hover {
+  transform: translateY(-2px);
+  background: var(--button-hover-bg);
+  box-shadow: var(--button-hover-shadow);
+}
+
+.couple-budget-container button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ===== BUDGET CARDS ===== */
+.couple-budget-container > div.bg-white {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* BUDGET HEADER */
+.couple-budget-container > div.bg-white p.font-semibold {
+  font-weight: 600;
+}
+
+.couple-budget-container > div.bg-white p.font-mono {
+  font-family: monospace;
+}
+
+/* ===== PROGRESS BAR ===== */
+.couple-budget-container .w-full.bg-gray-200 {
+  height: 0.5rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.couple-budget-container .w-full.bg-gray-200 > div {
+  height: 100%;
+  border-radius: var(--radius-md);
+  transition: width 0.3s ease;
+  background: #10b981;
+}
+
+/* ===== PAY BUTTONS ===== */
+.couple-budget-container .flex.flex-wrap button {
+  transition: all var(--transition-base);
+}
+
+.couple-budget-container .flex.flex-wrap button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* ===== REMAINING TEXT ===== */
+.couple-budget-container p.text-sm {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .couple-budget-container > div.bg-gray-50 {
+    grid-template-columns: 1fr;
+  }
+
+  .couple-budget-container h1 {
+    font-size: 1.5rem;
+    justify-content: center;
+  }
+}

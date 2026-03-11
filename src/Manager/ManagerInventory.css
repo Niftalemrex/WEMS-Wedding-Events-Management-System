@@ -1,0 +1,308 @@
+/* ===========================
+   ManagerInventory.css
+   Theme-aware (Light / Dark / System)
+=========================== */
+
+/* ===== GLOBAL THEME ===== */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+
+  --card-bg: #ffffff;
+  --card-alt-bg: #faf5ff;
+
+  --primary: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --primary-light: #a78bfa;
+
+  --border-color: #e5e7eb;
+  --soft-border: #ddd6fe;
+
+  --shadow-soft: rgba(0, 0, 0, 0.08);
+  --shadow-strong: rgba(139, 92, 246, 0.35);
+}
+
+/* ===== DARK MODE ===== */
+.dark,
+:root.dark {
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+
+  --card-bg: #1e293b;
+  --card-alt-bg: #312e81;
+
+  --border-color: #334155;
+  --soft-border: #4338ca;
+
+  --shadow-soft: rgba(0, 0, 0, 0.45);
+  --shadow-strong: rgba(139, 92, 246, 0.55);
+}
+
+/* ===== CONTAINER ===== */
+.manager-inventory-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+.manager-inventory-container h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--soft-border);
+  position: relative;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark),
+    var(--primary-light)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.manager-inventory-container h1::after {
+  content: "📦";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.manager-inventory-container h1::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 200px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  border-radius: 3px;
+}
+
+/* ===== FORM GRID ===== */
+.manager-inventory-container .grid {
+  display: grid;
+  gap: 1.25rem;
+
+  background: var(--card-alt-bg);
+  padding: 2rem;
+  border-radius: 20px;
+
+  border: 1px solid var(--soft-border);
+  box-shadow: 0 10px 30px var(--shadow-soft);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .manager-inventory-container .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ===== INPUTS ===== */
+.manager-inventory-container input[type="text"],
+.manager-inventory-container input[type="number"] {
+  width: 100%;
+  padding: 1rem 1.25rem;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  color: var(--text-color);
+  background: var(--card-bg);
+
+  border: 2px solid var(--soft-border);
+  border-radius: 12px;
+
+  transition: all 0.3s ease;
+}
+
+.manager-inventory-container input::placeholder {
+  opacity: 0.6;
+}
+
+.manager-inventory-container input:hover {
+  border-color: var(--primary-light);
+}
+
+.manager-inventory-container input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+/* ===== ADD BUTTON ===== */
+.manager-inventory-container button.bg-green-600 {
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  color: white;
+
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: none;
+
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 8px 20px var(--shadow-strong);
+}
+
+.manager-inventory-container button.bg-green-600:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px var(--shadow-strong);
+}
+
+/* ===== INVENTORY LIST ===== */
+.manager-inventory-container ul {
+  list-style: none;
+  padding: 0 0 0 20px;
+  margin-top: 2rem;
+
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.manager-inventory-container li {
+  background: var(--card-bg);
+  border: 1px solid var(--soft-border);
+  border-radius: 14px;
+
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+
+  box-shadow: 0 4px 12px var(--shadow-soft);
+  position: relative;
+
+  transition: all 0.3s ease;
+}
+
+.manager-inventory-container li:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== STATUS STRIP ===== */
+.manager-inventory-container li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 5px;
+  height: 100%;
+
+  background: linear-gradient(
+    to bottom,
+    var(--primary),
+    var(--primary-dark)
+  );
+  border-radius: 5px 0 0 5px;
+}
+
+/* ===== ITEM CONTENT ===== */
+.manager-inventory-container li > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .manager-inventory-container li > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* ===== EDITABLE INPUTS ===== */
+.manager-inventory-container li input {
+  background: var(--card-bg);
+  border: 2px solid var(--soft-border);
+  border-radius: 10px;
+
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  transition: all 0.2s ease;
+}
+
+.manager-inventory-container li input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* ===== DELETE BUTTON ===== */
+.manager-inventory-container li button.bg-red-600 {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.manager-inventory-container li button.bg-red-600:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* ===== EMPTY STATE ===== */
+.manager-inventory-container .text-gray-500 {
+  text-align: center;
+  color: var(--text-color);
+  opacity: 0.7;
+
+  padding: 4rem 2rem;
+  border: 2px dashed var(--soft-border);
+  border-radius: 20px;
+
+  background: var(--card-alt-bg);
+}
+
+/* ===== SCROLLBAR ===== */
+.manager-inventory-container ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.manager-inventory-container ul::-webkit-scrollbar-track {
+  background: var(--card-alt-bg);
+  border-radius: 10px;
+}
+
+.manager-inventory-container ul::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  border-radius: 10px;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.manager-inventory-container input:focus-visible,
+.manager-inventory-container button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}

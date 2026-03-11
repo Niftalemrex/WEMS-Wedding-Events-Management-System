@@ -1,0 +1,143 @@
+/* Sidebar container */
+.admin-sidebar {
+    width: 260px;
+    background: #1f2937;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Header */
+  .sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .profile-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+    background: rgba(37,99,235,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-name {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .profile-role {
+    margin: 0;
+    font-size: 0.75rem;
+    opacity: 0.7;
+  }
+  
+  /* Menu */
+  .sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-menu li {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .sidebar-menu li:hover,
+  .sidebar-menu li.active {
+    background: rgba(37,99,235,0.1);
+  }
+  
+  .menu-icon {
+    margin-right: 0.75rem;
+  }
+  
+  /* Settings */
+  .settings-section {
+    margin-top: auto;
+    padding: 1rem;
+  }
+  
+  .settings-toggle {
+    cursor: pointer;
+    padding: 0.5rem 0;
+  }
+  
+  .settings-submenu {
+    list-style: none;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .settings-submenu li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .settings-submenu li.active {
+    font-weight: 600;
+  }
+  
+  .logout-button {
+    margin-top: 0.5rem;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background: rgba(239,68,68,0.1);
+  }
+  /* Settings & Menu Icons */
+.menu-icon {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Settings submenu styling */
+  .settings-submenu li {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .settings-submenu li.active {
+    font-weight: 600;
+    background: rgba(37,99,235,0.1);
+  }
+  
+  .settings-submenu li:hover {
+    background: rgba(37,99,235,0.1);
+  }
+  

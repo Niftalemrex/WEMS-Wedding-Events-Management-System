@@ -1,0 +1,171 @@
+/* ===========================
+   CouplesTaskChecklist.css
+   Couple Task Checklist
+=========================== */
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg-color: #f9fafb;
+  --card-bg: #ffffff;
+  --text-color: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #d1d5db;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-focus: #3b82f6;
+  --button-bg: #3b82f6;
+  --button-hover-bg: #2563eb;
+  --button-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  --radius-md: 10px;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --transition-base: 0.3s ease;
+}
+
+/* ===== CONTAINER ===== */
+.couple-task-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--space-4);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ===== HEADER ===== */
+.couple-task-container h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.couple-task-container p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-4);
+}
+
+/* ===== FORM GRID ===== */
+.couple-task-container .grid {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .couple-task-container .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.couple-task-container input,
+.couple-task-container select {
+  border: 2px solid var(--input-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: all var(--transition-base);
+}
+
+.couple-task-container input:focus,
+.couple-task-container select:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* ===== BUTTON ===== */
+.couple-task-container button {
+  background-color: var(--button-bg);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--button-shadow);
+  transition: all var(--transition-base);
+}
+
+.couple-task-container button:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-1px);
+}
+
+/* ===== TASK LIST ===== */
+.couple-task-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.couple-task-container li {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: all var(--transition-base);
+}
+
+.couple-task-container li:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
+/* ===== TASK FIELDS ===== */
+.couple-task-container li input[type="text"],
+.couple-task-container li input[type="date"],
+.couple-task-container li select {
+  border: 1px solid var(--input-border);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  width: 100%;
+  transition: all var(--transition-base);
+}
+
+.couple-task-container li input[type="text"].line-through {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* ===== DONE TOGGLE ===== */
+.couple-task-container li label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.couple-task-container li button {
+  background: transparent;
+  color: #ef4444;
+  border: none;
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: color var(--transition-base);
+}
+
+.couple-task-container li button:hover {
+  color: #b91c1c;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .couple-task-container li {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}

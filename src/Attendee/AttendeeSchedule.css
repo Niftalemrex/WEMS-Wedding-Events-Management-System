@@ -1,0 +1,171 @@
+/* ==========================
+   AttendeeSchedule.css
+   Full-width + Theme-aware
+========================== */
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #1f2937;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --text-muted: #64748b;
+  --primary-color: #3b82f6;
+  --shadow-color: rgba(0,0,0,0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #111827;
+    --text-color: #f3f4f6;
+    --card-bg: #1f2937;
+    --card-border: #374151;
+    --text-muted: #9ca3af;
+    --primary-color: #3b82f6;
+    --shadow-color: rgba(0,0,0,0.12);
+  }
+}
+
+/* ===== CONTAINER ===== */
+.attendee-schedule-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0; /* full width */
+}
+
+/* Optional: content grid inside full-width container */
+.schedule-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* ===== HEADER ===== */
+.attendee-schedule-container h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: inherit;
+}
+
+/* ===== SCHEDULE CARD ===== */
+.schedule-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.schedule-card:hover {
+  background-color: var(--card-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-color: var(--primary-color);
+}
+
+/* ===== EVENT HEADER ===== */
+.schedule-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+/* ===== EVENT DETAILS ===== */
+.schedule-card .flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.schedule-card .flex svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ===== AGENDA ===== */
+.schedule-card ul {
+  margin-top: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.schedule-card li {
+  display: flex;
+  align-items: start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.schedule-card li svg {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+  color: var(--primary-color);
+}
+
+/* ===== EMPTY STATE ===== */
+.attendee-schedule-container p.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  padding: 3rem 2rem;
+  border: 2px dashed var(--card-border);
+  border-radius: 12px;
+  background-color: var(--bg-color);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .attendee-schedule-container {
+    padding: 1.5rem;
+  }
+  .schedule-card {
+    padding: 1rem;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .attendee-schedule-container {
+    background: white !important;
+    color: black !important;
+    padding: 1rem !important;
+  }
+  .schedule-card {
+    background: #f9f9f9 !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+  .schedule-card h3,
+  .schedule-card .flex,
+  .schedule-card li {
+    color: black !important;
+  }
+}
+
+/* ===== ACCESSIBILITY & REDUCED MOTION ===== */
+.schedule-card:focus-within {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schedule-card,
+  .schedule-card:hover,
+  .attendee-schedule-container {
+    transition: none;
+    transform: none;
+  }
+}

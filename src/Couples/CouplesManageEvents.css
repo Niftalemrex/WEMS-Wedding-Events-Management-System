@@ -1,0 +1,182 @@
+/* ===========================
+   CouplesManageEvents.css
+   Modern, Theme-Friendly Couple Manage Events
+=========================== */
+
+/* ===== VARIABLES ===== */
+:root {
+  --bg-color: #f9fafb;
+  --text-color: #2d3748;
+  --card-bg: #ffffff;
+  --accent-primary: #4299e1;
+  --accent-danger: #e53e3e;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark mode */
+.dark,
+:root.dark {
+  --bg-color: #0f172a;
+  --text-color: #f3f4f6;
+  --card-bg: #1e293b;
+  --accent-primary: #4299e1;
+  --accent-danger: #c53030;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ===== CONTAINER & BASE ===== */
+.couple-manage-events-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+}
+
+/* Typography */
+.couple-manage-events-container h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.couple-manage-events-container input[type="text"],
+.couple-manage-events-container input[type="date"] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.couple-manage-events-container input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Add button */
+.couple-manage-events-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.couple-manage-events-container button.bg-blue-600 {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
+.couple-manage-events-container button.bg-blue-600:hover {
+  background-color: #2b6cb0;
+}
+
+/* Event list items */
+.couple-manage-events-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.couple-manage-events-container li {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.couple-manage-events-container li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Inline inputs inside list */
+.couple-manage-events-container li input[type="text"],
+.couple-manage-events-container li input[type="date"] {
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  background: transparent;
+  padding: 0.25rem 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.couple-manage-events-container li input:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+/* Delete button */
+.couple-manage-events-container li button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.couple-manage-events-container li button.bg-red-600 {
+  background-color: var(--accent-danger);
+}
+
+.couple-manage-events-container li button.bg-red-600:hover:not(:disabled) {
+  background-color: #c53030;
+  transform: scale(1.05);
+}
+
+.couple-manage-events-container li button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive grid for form */
+.couple-manage-events-container .grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .couple-manage-events-container .grid {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: end;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .couple-manage-events-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .couple-manage-events-container li {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

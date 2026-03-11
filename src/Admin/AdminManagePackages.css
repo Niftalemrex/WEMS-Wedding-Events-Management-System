@@ -1,0 +1,621 @@
+/* AdminManagePackages.css - Scoped Component Styles */
+
+/* ===== COMPONENT-SPECIFIC STYLES ===== */
+.admin-manage-packages-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  position: relative;
+  padding: var(--space-4);
+  box-sizing: border-box;
+}
+
+/* Optional: Larger padding on bigger screens */
+@media (min-width: 1024px) {
+  .admin-manage-packages-container {
+    padding: var(--space-8);
+  }
+}
+
+/* Form inputs - scoped */
+.admin-manage-packages-container input[type="text"],
+.admin-manage-packages-container input[type="number"] {
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.admin-manage-packages-container input[type="text"]:focus,
+.admin-manage-packages-container input[type="number"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  outline: none;
+}
+
+.admin-manage-packages-container input[type="text"]::placeholder,
+.admin-manage-packages-container input[type="number"]::placeholder {
+  color: var(--gray-400);
+}
+
+/* Number input specific styling */
+.admin-manage-packages-container input[type="number"]::-webkit-inner-spin-button,
+.admin-manage-packages-container input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 1.5rem;
+}
+
+/* Buttons - scoped to this component */
+.admin-manage-packages-container button {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: all var(--transition-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: none;
+  outline: none;
+}
+
+.admin-manage-packages-container button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Button colors - scoped */
+.admin-manage-packages-container .bg-green-600 {
+  background-color: #059669;
+}
+
+.admin-manage-packages-container .bg-green-600:hover {
+  background-color: #047857;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-manage-packages-container .bg-green-600:active {
+  transform: translateY(0);
+}
+
+.admin-manage-packages-container .bg-red-600 {
+  background-color: #dc2626;
+}
+
+.admin-manage-packages-container .bg-red-600:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-manage-packages-container .bg-red-600:active {
+  transform: translateY(0);
+}
+
+.admin-manage-packages-container .bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.admin-manage-packages-container .bg-blue-600:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-manage-packages-container .bg-blue-600:active {
+  transform: translateY(0);
+}
+
+.admin-manage-packages-container .bg-purple-600 {
+  background-color: #7c3aed;
+}
+
+.admin-manage-packages-container .bg-purple-600:hover {
+  background-color: #6d28d9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-manage-packages-container .bg-purple-600:active {
+  transform: translateY(0);
+}
+
+/* Text colors - scoped */
+.admin-manage-packages-container .text-white {
+  color: #ffffff;
+}
+
+.admin-manage-packages-container .text-gray-500 {
+  color: var(--gray-500);
+}
+
+.admin-manage-packages-container .text-purple-600 {
+  color: #7c3aed;
+}
+
+/* Background colors - scoped */
+.admin-manage-packages-container .bg-gray-50 {
+  background-color: var(--gray-50);
+}
+
+.admin-manage-packages-container .hover\\:bg-gray-100:hover {
+  background-color: var(--gray-100);
+}
+
+/* Search input - scoped */
+.admin-manage-packages-container input[type="text"][placeholder*="Search"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-position: left 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  padding-left: 2.5rem;
+}
+
+/* Package list - scoped */
+.admin-manage-packages-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-manage-packages-container .space-y-3 > * + * {
+  margin-top: var(--space-3);
+}
+
+/* Package list item - scoped */
+.admin-manage-packages-container li {
+  background-color: var(--gray-50);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-manage-packages-container li:hover {
+  background-color: var(--gray-100);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--gray-300);
+}
+
+/* Package info section - scoped */
+.admin-manage-packages-container li > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Package text info - scoped */
+.admin-manage-packages-container li > div:first-child > span {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.admin-manage-packages-container li > div:first-child > span strong {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Delete button in list - scoped */
+.admin-manage-packages-container li > button {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+/* Empty state - scoped */
+.admin-manage-packages-container .text-center {
+  text-align: center;
+}
+
+.admin-manage-packages-container p.text-gray-500.text-center {
+  padding: var(--space-8);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--gray-500);
+}
+
+/* Icons - scoped */
+.admin-manage-packages-container .h-4 {
+  height: 1rem;
+}
+
+.admin-manage-packages-container .w-4 {
+  width: 1rem;
+}
+
+.admin-manage-packages-container .h-5 {
+  height: 1.25rem;
+}
+
+.admin-manage-packages-container .w-5 {
+  width: 1.25rem;
+}
+
+/* Grid utilities - scoped */
+.admin-manage-packages-container .grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.admin-manage-packages-container .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Flex utilities - scoped */
+.admin-manage-packages-container .flex {
+  display: flex;
+}
+
+.admin-manage-packages-container .flex-col {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .admin-manage-packages-container .md\\:flex-row {
+    flex-direction: row;
+  }
+}
+
+.admin-manage-packages-container .flex-1 {
+  flex: 1 1 0%;
+}
+
+.admin-manage-packages-container .items-center {
+  align-items: center;
+}
+
+.admin-manage-packages-container .items-end {
+  align-items: flex-end;
+}
+
+.admin-manage-packages-container .justify-center {
+  justify-content: center;
+}
+
+.admin-manage-packages-container .justify-between {
+  justify-content: space-between;
+}
+
+/* Margin utilities - scoped */
+.admin-manage-packages-container .mb-4 {
+  margin-bottom: var(--space-4);
+}
+
+/* Padding utilities - scoped */
+.admin-manage-packages-container .p-4 {
+  padding: var(--space-4);
+}
+
+.admin-manage-packages-container .p-2 {
+  padding: var(--space-2);
+}
+
+.admin-manage-packages-container .p-3 {
+  padding: var(--space-3);
+}
+
+.admin-manage-packages-container .p-1 {
+  padding: var(--space-1);
+}
+
+.admin-manage-packages-container .px-3 {
+  padding-left: var(--space-3);
+  padding-right: var(--space-3);
+}
+
+.admin-manage-packages-container .px-4 {
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.admin-manage-packages-container .py-1 {
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
+}
+
+.admin-manage-packages-container .py-2 {
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+/* Text utilities - scoped */
+.admin-manage-packages-container .text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@media (min-width: 768px) {
+  .admin-manage-packages-container .text-2xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+.admin-manage-packages-container .font-bold {
+  font-weight: 700;
+}
+
+/* Border radius - scoped */
+.admin-manage-packages-container .rounded {
+  border-radius: var(--radius-md);
+}
+
+/* Width utilities - scoped */
+.admin-manage-packages-container .w-full {
+  width: 100%;
+}
+
+/* Gap utilities - scoped */
+.admin-manage-packages-container .gap-2 {
+  gap: var(--space-2);
+}
+
+.admin-manage-packages-container .gap-4 {
+  gap: var(--space-4);
+}
+
+/* Shadow utilities - scoped */
+.admin-manage-packages-container .shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Transition utilities - scoped */
+.admin-manage-packages-container .transition {
+  transition: all var(--transition-base);
+}
+
+/* Form validation states - scoped */
+.admin-manage-packages-container input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #dc2626;
+}
+
+.admin-manage-packages-container input:valid:not(:focus):not(:placeholder-shown) {
+  border-color: #10b981;
+}
+
+/* Responsive design - scoped */
+@media (min-width: 768px) {
+  .admin-manage-packages-container .md\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .admin-manage-packages-container .md\\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .admin-manage-packages-container .md\\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Dark mode adjustments - scoped */
+.dark .admin-manage-packages-container input[type="text"],
+.dark .admin-manage-packages-container input[type="number"] {
+  background-color: var(--gray-800);
+  border-color: var(--gray-700);
+}
+
+.dark .admin-manage-packages-container input[type="text"]:focus,
+.dark .admin-manage-packages-container input[type="number"]:focus {
+  border-color: var(--primary-color);
+}
+
+.dark .admin-manage-packages-container .bg-gray-50 {
+  background-color: var(--gray-900);
+}
+
+.dark .admin-manage-packages-container .hover\\:bg-gray-100:hover {
+  background-color: var(--gray-800);
+}
+
+.dark .admin-manage-packages-container li {
+  background-color: var(--gray-900);
+  border-color: var(--gray-800);
+}
+
+.dark .admin-manage-packages-container li:hover {
+  background-color: var(--gray-800);
+  border-color: var(--gray-700);
+}
+
+.dark .admin-manage-packages-container input[type="number"]::-webkit-inner-spin-button,
+.dark .admin-manage-packages-container input[type="number"]::-webkit-outer-spin-button {
+  filter: invert(0.8);
+}
+
+/* Animations - scoped */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* List item animation - scoped */
+.admin-manage-packages-container li {
+  animation: slideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.admin-manage-packages-container li:nth-child(1) { animation-delay: 0.1s; }
+.admin-manage-packages-container li:nth-child(2) { animation-delay: 0.2s; }
+.admin-manage-packages-container li:nth-child(3) { animation-delay: 0.3s; }
+.admin-manage-packages-container li:nth-child(4) { animation-delay: 0.4s; }
+.admin-manage-packages-container li:nth-child(5) { animation-delay: 0.5s; }
+.admin-manage-packages-container li:nth-child(n+6) { animation-delay: 0.6s; }
+
+/* Accessibility improvements - scoped */
+.admin-manage-packages-container .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for accessibility - scoped */
+.admin-manage-packages-container button:focus-visible,
+.admin-manage-packages-container input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Custom scrollbar for the list - scoped */
+.admin-manage-packages-container ul {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: var(--space-2);
+}
+
+.admin-manage-packages-container ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-manage-packages-container ul::-webkit-scrollbar-track {
+  background: var(--gray-100);
+  border-radius: var(--radius-full);
+}
+
+.admin-manage-packages-container ul::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: var(--radius-full);
+}
+
+.dark .admin-manage-packages-container ul::-webkit-scrollbar-track {
+  background: var(--gray-800);
+}
+
+.dark .admin-manage-packages-container ul::-webkit-scrollbar-thumb {
+  background: var(--gray-600);
+}
+
+/* Responsive adjustments for small screens - scoped */
+@media (max-width: 768px) {
+  .admin-manage-packages-container li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  
+  .admin-manage-packages-container li > div:first-child {
+    width: 100%;
+  }
+  
+  .admin-manage-packages-container li > button {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .admin-manage-packages-container .grid-cols-1.md\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+  
+  .admin-manage-packages-container .flex-col.md\\:flex-row {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .admin-manage-packages-container .md\\:flex-1 {
+    flex: 1 1 0%;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-manage-packages-container {
+    padding: var(--space-4);
+  }
+  
+  .admin-manage-packages-container input[type="number"] {
+    font-size: 1rem;
+  }
+}
+
+/* Print styles - scoped */
+@media print {
+  .admin-manage-packages-container {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .admin-manage-packages-container button {
+    display: none !important;
+  }
+  
+  .admin-manage-packages-container input[type="text"],
+  .admin-manage-packages-container input[type="number"] {
+    border: 1px solid #ccc !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  .admin-manage-packages-container li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .admin-manage-packages-container li > div:first-child > span {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Price formatting */
+.admin-manage-packages-container li > div:first-child > span::after {
+  content: '';
+}
+
+/* Number input spinner customization */
+.admin-manage-packages-container input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.admin-manage-packages-container input[type="number"]::-webkit-outer-spin-button,
+.admin-manage-packages-container input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Sort button arrow styling */
+.admin-manage-packages-container .bg-blue-600::after {
+  content: " ↑";
+  font-weight: bold;
+}
+
+.admin-manage-packages-container .bg-blue-600:hover::after {
+  content: " ↑";
+}
+
+.admin-manage-packages-container .bg-blue-600:not(.sort-asc)::after {
+  content: " ↓";
+}
+
+/* Currency symbol */
+.admin-manage-packages-container li > div:first-child > span::before {
+  content: "$";
+  color: var(--success-color);
+  font-weight: 600;
+  margin-right: 0.125rem;
+}
