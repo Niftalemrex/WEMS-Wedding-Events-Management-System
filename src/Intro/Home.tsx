@@ -418,12 +418,7 @@ const Home: React.FC = () => {
                     <div className="recent-image-wrapper">
                       <img src={img} alt={`Wedding of ${wedding.couple}`} loading="lazy" />
                       <div className="recent-overlay">
-                        <button className="gallery-button" aria-label="View gallery">
-                          <span>View Gallery</span>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M7 17L17 7M17 7H8M17 7V16" />
-                          </svg>
-                        </button>
+                       
                       </div>
                     </div>
                     <div className="recent-content">
@@ -442,10 +437,8 @@ const Home: React.FC = () => {
 
           <div className="section-footer fade-in">
             <a href="#" className="btn btn-secondary">
-              <span>See All Weddings</span>
-              <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+            
+              
             </a>
           </div>
         </div>
