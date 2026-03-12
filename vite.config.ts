@@ -1,12 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Detect environment
-const isGHPages = process.env.NODE_ENV === "production";
-
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: isGHPages
+  base: mode === "production"
     ? "/WEMS-Wedding-Events-Management-System/"
     : "/",
-});
+}));
