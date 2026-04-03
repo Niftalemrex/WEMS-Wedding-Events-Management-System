@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useAppSettings } from "../Contexts/AppSettingsContext";
 import type { Language } from "../Contexts/AppSettingsContext";
-//import "./VendorLanguage.css";
+import "../Vendor/Vendorlanguage.css";
 
 const FLAG_IMAGES: Record<Language, string> = {
   en: "https://flagcdn.com/w40/us.png",
