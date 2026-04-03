@@ -34,7 +34,7 @@ type UserRole =
    ROUTES
 ===================================================== */
 function AppContent() {
-  const [role, setRole] = useState<UserRole>(null);
+  const [, setRole] = useState<UserRole>(null);
 
   return (
     <Routes>
