@@ -1,9 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [react()],
-  base: mode === "production"
-    ? "/WEMS-Wedding-Events-Management-System/"
-    : "/",
-}));
+  base: process.env.NODE_ENV === "production" ? "/" : "/",
+});
